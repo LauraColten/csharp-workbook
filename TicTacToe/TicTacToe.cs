@@ -73,6 +73,8 @@ namespace TicTacToe
         public static bool CheckForTie()
         {
             if (!CheckForWin() && count >= 9) {
+                Console.WriteLine("It's a tie!");
+                DrawBoard();
                 return true;
             }
             return false;
