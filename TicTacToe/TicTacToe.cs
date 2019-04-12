@@ -4,7 +4,11 @@ namespace TicTacToe
 {
     class Program
     {
-        public static string playerTurn = "X";
+        public static string playerTurn = "O";
+
+        public static int count = 0;
+
+
         public static string[][] board = new string[][]
         {
             new string[] {" ", " ", " "},
@@ -17,6 +21,11 @@ namespace TicTacToe
             do
             {
                 DrawBoard();
+                if (playerTurn == "X") {
+                    playerTurn = "O";
+                }else{
+                    playerTurn = "X";
+                }
                 GetInput();
 
             } while (!CheckForWin() && !CheckForTie());
@@ -32,45 +41,74 @@ namespace TicTacToe
             int row = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter Column:");
             int column = int.Parse(Console.ReadLine());
+            PlaceMark(row, column);
         }
 
         public static void PlaceMark(int row, int column)
         {
-        // your code goes here
+            if (board[row][column] == " ") {
+                if (playerTurn == "X") {
+                    board[row][column]= "X";
+                }else{
+                    board[row][column] = "0";
+                }
+                count++;
+            }else{
+                Console.WriteLine("That spot has already been chosen. Choose another.");
+            }
+
         }
 
         public static bool CheckForWin()
         {
-            // your code goes here
+            if (HorizontalWin() || VerticalWin() || DiagonalWin()) {
+                Console.WriteLine("Player "+playerTurn+", you win!");
+                DrawBoard();
+                return true;
+            }
 
             return false;
         }
 
         public static bool CheckForTie()
         {
-            // your code goes here
-
+            if (!CheckForWin() && count >= 9) {
+                return true;
+            }
             return false;
         }
-        
+
         public static bool HorizontalWin()
         {
-        // your code goes here
-
+            if (playerTurn == board[0][0] && playerTurn == board[0][1] && playerTurn == board[0][2]) {
+                return true;
+            }else if (playerTurn == board[1][0] && playerTurn == board[1][1] && playerTurn == board[1][2]) {
+                return true;
+            }else if (playerTurn == board[2][0] && playerTurn == board[2][1] && playerTurn == board[2][2]) {
+                return true;
+            }
         return false;
         }
 
         public static bool VerticalWin()
         {
-            // your code goes here
-
+            if (playerTurn == board[0][0] && playerTurn == board[1][0] && playerTurn == board[2][0]) {
+                return true;
+            }else if (playerTurn == board[0][1] && playerTurn == board[1][1] && playerTurn == board[2][1]) {
+                return true;
+            }else if (playerTurn == board[0][2] && playerTurn == board[1][2] && playerTurn == board[2][2]) {
+                return true;
+            }
             return false;
         }
 
         public static bool DiagonalWin()
         {
-            // your code goes here
-
+            if (playerTurn == board[0][0] && playerTurn == board[1][1] && playerTurn == board[2][2]) {
+                return true;
+            }else if (playerTurn == board[0][2] && playerTurn == board[1][1] && playerTurn == board[2][0]) {
+                return true;
+            }
             return false;
         }
 
