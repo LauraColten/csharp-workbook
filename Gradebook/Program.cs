@@ -41,6 +41,8 @@ namespace Gradebook
 			        Console.WriteLine(grade);
 		        }
             }
+            Console.WriteLine(grade.Max());
+            Console.WriteLine(grade.Max());
 
 
 
