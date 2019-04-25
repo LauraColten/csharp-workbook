@@ -46,6 +46,7 @@ namespace Gradebook
 
 
 
+
 //             Console.WriteLine("Student 1's highest grade is: " +student1Array.Max());
 //             Console.WriteLine("Student 1's lowest grade is: " +student1Array.Min());
 //             var sum = student1Array.Sum(grades=>Convert.ToInt32(grades));
