@@ -11,16 +11,17 @@ namespace CarGarage
       Garage smallGarage = new Garage(2);
 
       smallGarage.ParkCar(blueCar, 0);
-      Console.WriteLine(smallGarage.Cars);
 
       List<Person> people = new List<Person>();
       for (int i = 0; i < 3; i++)
       {
-        Person x = new Person("Arlo");
         Console.WriteLine("Enter your name: ");
-        x.Name = Console.ReadLine();
+        string name = Console.ReadLine();
+        Person x = new Person(name);
         people.Add(x);
       }
+      blueCar.People = people;
+      Console.WriteLine(smallGarage.Cars);
     }
   }
 
@@ -31,7 +32,11 @@ namespace CarGarage
       Color = initialColor;
     }
 
+    public List<Person> People = new List<Person>();
+
+
     public string Color { get; private set; }
+
   }
 
   class Garage
@@ -60,9 +65,14 @@ namespace CarGarage
           if (cars[i] != null)
           {
             Console.WriteLine(String.Format("The {0} car is in spot {1}.", cars[i].Color, i));
+            Console.WriteLine("The people in the car are: ");
+            for (int j = 0; j < cars[i].People.Count; j++) {
+                Console.Write(cars[i].People[j].Name+ " ");
+
+            }
           }
         }
-        return "That's all!";
+        return " ";
       }
     }
   }
@@ -73,7 +83,10 @@ namespace CarGarage
     {
       Name = firstName;
     }
-    public string Name { get; set; }
+    public string Name {get; set;}
   }
 
 }
+
+
+
