@@ -9,11 +9,16 @@ namespace RockPaperScissors
       Console.WriteLine("Let's play rock, paper, scissors!");
       Console.WriteLine("Enter r, p, or s");
       string hand1 = Console.ReadLine().ToLower();
-      if (hand1 != "r" || hand1 != "p" || hand1 != "s")
+      try
       {
-        throw new Exception("Not a valid hand entry");
-      }
+        if (hand1 != "r" || hand1 != "p" || hand1 != "s")
+          throw new Exception("Not a valid hand entry");
 
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e.Message);
+      }
       Console.WriteLine("The computer is choosing...");
       string newChoice = computerChoice();
       Console.WriteLine(newChoice);
