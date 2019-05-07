@@ -9,6 +9,11 @@ namespace RockPaperScissors
       Console.WriteLine("Let's play rock, paper, scissors!");
       Console.WriteLine("Enter r, p, or s");
       string hand1 = Console.ReadLine().ToLower();
+      if (hand1 != "r" || hand1 != "p" || hand1 != "s")
+      {
+        throw new Exception("Not a valid hand entry");
+      }
+
       Console.WriteLine("The computer is choosing...");
       string newChoice = computerChoice();
       Console.WriteLine(newChoice);
@@ -38,8 +43,6 @@ namespace RockPaperScissors
     }
     public static string CompareHands(string hand1, string hand2)
     {
-      try
-      {
         if (hand1 == hand2)
         {
           return "It's a tie!";
@@ -60,13 +63,7 @@ namespace RockPaperScissors
         {
           return "The computer wins!";
         }
-        throw new Exception("Not a valid hand entry");
       }
-      catch (Exception)
-      {
-
-      }
-      return "0";
     }
     public class MyException : System.Exception
     {
@@ -78,5 +75,5 @@ namespace RockPaperScissors
           System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
     }
   }
-}
+
 
