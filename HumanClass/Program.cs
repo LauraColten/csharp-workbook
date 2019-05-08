@@ -7,7 +7,7 @@ namespace HumanClass
         static void Main(string[] args)
         {
             Human h1 = new Human("John", "Jack");
-            SuperHuman s1 = new SuperHuman("Superman", "Clark Kent", "speed");
+            SuperHuman s1 = new SuperHuman("Superman", "everything");
             Console.WriteLine(h1.getGreeting());
             Console.WriteLine(s1.getGreeting());
 
@@ -35,12 +35,12 @@ namespace HumanClass
     {
         public string superPower;
 
-        public SuperHuman(string name, string nickname, string initialSuperPower) : base(name, nickname)
+        public SuperHuman(string name, string initialSuperPower) : base(name, null)
         {
             this.superPower = initialSuperPower;
         }
 
-        public override string getGreeting() { return "Hi, my name is " +name+ ", my nickname is " +nickname+ ", and my super power is: " +superPower;}
+        public override string getGreeting() { return "Hi, my name is " +name+ ", and my super power is: " +superPower;}
 
     }
 }
