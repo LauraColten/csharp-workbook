@@ -7,14 +7,14 @@ namespace TowersOfHanoi
     {
         static void Main(string[] args)
         {
-            Block b1 = new Block(1);
-            Block b2 = new Block(2);
 
-            Tower towerA = new Tower();
-            towerA.blocks.Push(b2);
-            towerA.blocks.Push(b1);
+
+            Game g1 = new Game();
+
+
+            g1.printKeysAndWeights();
+
         }
-    }
 
     class Block
     {
@@ -48,9 +48,33 @@ namespace TowersOfHanoi
 
         public Game()
         {
+            Block b1 = new Block(1);
+            Block b2 = new Block(2);
+            Block b3 = new Block(3);
+            Block b4 = new Block(4);
+
+            towers["A"] = new Tower();
+            towers["A"].blocks.Push(b4);
+            towers["A"].blocks.Push(b3);
+            towers["A"].blocks.Push(b2);
+            towers["A"].blocks.Push(b1);
+
+            towers["B"] = new Tower();
+            towers["C"] = new Tower();
 
         }
 
-    }
+        public void printKeysAndWeights()
+        {
+            foreach(KeyValuePair<string, Tower> entry in towers)
+            {
+                Console.WriteLine(entry.Key);
+                foreach(Block block in entry.Value.blocks) {
+                    Console.WriteLine(block.weight);
+                }
+            }
+        }
 
+    }
+    }
 }
