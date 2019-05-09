@@ -61,8 +61,18 @@ namespace TowersOfHanoi
 
             towers["B"] = new Tower();
             towers["C"] = new Tower();
+        }
+
+        public string popOff;
+        public string popOn;
+        public void movePiece(string initialPopOff, string initialPopOn)
+        {
+
+            Block block = towers[initialPopOff].blocks.Pop();
+            towers[initialPopOn].blocks.Push(block);
 
         }
+
 
         public void printKeysAndWeights()
         {
