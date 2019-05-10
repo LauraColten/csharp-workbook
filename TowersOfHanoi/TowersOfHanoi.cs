@@ -53,23 +53,31 @@ namespace TowersOfHanoi
             Block b3 = new Block(3);
             Block b4 = new Block(4);
 
-            towers["A"] = new Tower();
-            towers["A"].blocks.Push(b4);
-            towers["A"].blocks.Push(b3);
-            towers["A"].blocks.Push(b2);
-            towers["A"].blocks.Push(b1);
+            Tower a = new Tower();
+            a.blocks.Push(b4);
+            a.blocks.Push(b3);
+            a.blocks.Push(b2);
+            a.blocks.Push(b1);
+            towers.Add("A", a);
 
-            towers["B"] = new Tower();
-            towers["C"] = new Tower();
+            Tower b = new Tower();
+            Tower c = new Tower();
+            towers.Add("B", b);
+            towers.Add("C", c);
+
         }
 
-        public string popOff;
-        public string popOn;
-        public void movePiece(string initialPopOff, string initialPopOn)
+        public void movePiece(string sourceTowerName, string destinationTowerName)
         {
 
-            Block block = towers[initialPopOff].blocks.Pop();
-            towers[initialPopOn].blocks.Push(block);
+            Tower x = towers[sourceTowerName];
+            Block blockToMove = x.blocks.Peek();
+            Tower y = towers[destinationTowerName];
+            Block topBlockInDestination = y.blocks.Peek();
+            //if statement here
+
+            x.blocks.Pop();
+            y.blocks.Push(blockToMove);
 
         }
 
