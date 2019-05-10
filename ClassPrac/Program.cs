@@ -24,7 +24,7 @@ namespace ClassPrac
                 foreach(IRace racer2 in racers)
                 {
                     IRace winner = race(racer1, racer2);
-                    Console.WriteLine("{0} vs {1} = {2}", racer1, racer2, winner);
+                    Console.WriteLine("{0} vs {1} = {2}", racer1, racer2, winner.getCelebrateMessage());
                 }
             }
 
@@ -46,6 +46,7 @@ namespace ClassPrac
     public interface IRace
     {
         double getSpeedMPH();
+        string getCelebrateMessage();
     }
 
     public class Car : IRace
@@ -70,6 +71,11 @@ namespace ClassPrac
             return this.speed;
         }
 
+        public string getCelebrateMessage()
+        {
+            return "Great driving!";
+        }
+
 
     }
 
@@ -91,6 +97,11 @@ namespace ClassPrac
         public double getSpeedMPH()
         {
             return this.humanSpeed * 60 / 1609.34;
+        }
+
+        public string getCelebrateMessage()
+        {
+            return string.Format("My name is {0}, and I am the greatest", this.humanName);
         }
 
     }
