@@ -10,6 +10,9 @@ namespace TowersOfHanoi
 
 
             Game g1 = new Game();
+            g1.movePiece("A", "B");
+
+
 
 
             g1.printKeysAndWeights();
@@ -69,17 +72,31 @@ namespace TowersOfHanoi
 
         public void movePiece(string sourceTowerName, string destinationTowerName)
         {
-
             Tower x = towers[sourceTowerName];
-            Block blockToMove = x.blocks.Peek();
             Tower y = towers[destinationTowerName];
-            Block topBlockInDestination = y.blocks.Peek();
-            //if statement here
+            bool IsLegalMove = IsLegal(x, y);
+            if(IsLegalMove) {
+                Block blockToMove = x.blocks.Pop();
+                y.blocks.Push(blockToMove);
+            }
 
-            x.blocks.Pop();
-            y.blocks.Push(blockToMove);
 
         }
+        public bool IsLegal(Tower from, Tower to)
+        {
+        if (from.blocks.Count == 0 && to.blocks.Count == 0){
+            return false;
+        }else if (from.blocks.Count == 0) {
+            return false;
+        }else if (to.blocks.Count == 0) {
+            return true;
+        }else if (from.blocks.Peek().weight < to.blocks.Peek().weight){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 
 
         public void printKeysAndWeights()
