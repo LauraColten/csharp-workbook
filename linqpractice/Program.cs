@@ -17,7 +17,7 @@ namespace linqpractice
                         .Where(s => s.age < 33)
                         .Where(x => x.name.StartsWith("A"));
 
-            IEnumerable<String> list =
+            IEnumerable<string> list =
                 from s in students
                 where s.age < 5
                 where s.name.StartsWith("E")

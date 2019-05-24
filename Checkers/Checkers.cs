@@ -8,7 +8,7 @@ namespace Checkers
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
         }
     }
 
@@ -17,7 +17,7 @@ namespace Checkers
         public string Symbol  { get; set; }
         public int[] Position  { get; set; }
         public string Color { get; set; }
-        
+
         public Checker(string color, int[] position)
         {
             // Your code here
@@ -28,48 +28,49 @@ namespace Checkers
     {
         public string[][] Grid  { get; set; }
         public List<Checker> Checkers { get; set; }
-        
+
         public Board()
         {
             // Your code here
             return;
         }
-        
-        public void CreateBoard()
+
+        public void CreateBoard(string[][] initialGrid)
         {
-            // Your code here
-            return;
+            this.Grid = initialGrid;
+
+
         }
-        
+
         public void GenerateCheckers()
         {
             // Your code here
             return;
         }
-        
+
         public void PlaceCheckers()
         {
             // Your code here
             return;
         }
-        
+
         public void DrawBoard()
         {
             // Your code here
             return;
         }
-        
+
         public Checker SelectChecker(int row, int column)
         {
             return Checkers.Find(x => x.Position.SequenceEqual(new List<int> { row, column }));
         }
-        
+
         public void RemoveChecker(int row, int column)
         {
             // Your code here
             return;
         }
-        
+
         public bool CheckForWin()
         {
             return Checkers.All(x => x.Color == "white") || !Checkers.Exists(x => x.Color == "white");
